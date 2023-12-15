@@ -1,0 +1,11 @@
+server:
+  port: 8020
+spring:
+  rabbitmq:
+    host: 118.31.5.247
+    port: 5673
+    username: guest
+    password: guest
+
+
+
