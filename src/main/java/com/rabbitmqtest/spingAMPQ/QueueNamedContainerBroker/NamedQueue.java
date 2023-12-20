@@ -25,5 +25,4 @@ public class NamedQueue {
         container.setMissingQueuesFatal(false);
         return container;
     }
-
 }

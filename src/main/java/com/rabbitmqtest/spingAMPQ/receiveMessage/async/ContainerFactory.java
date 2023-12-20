@@ -56,9 +56,19 @@ public class ContainerFactory {
             SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory){
         SimpleMessageListenerContainer listenerContainer = simpleRabbitListenerContainerFactory.createListenerContainer();
         listenerContainer.setQueueNames("container-queue");
+        //设置并发的消费者数量
+        listenerContainer.setConcurrentConsumers(3);
+        //设置最大的消费者数量
+        /**
+         * 这个方法定义了在需要时可以增加到的最大并发消费者数量。
+         * 当消息队列中的消息积压严重或者系统资源充足时，消息监听容器可能会自动增加并发消费者数量以提高消息处理能力，
+         * 但不会超过 setMaxConcurrentConsumers() 方法设定的上限。
+         */
+        listenerContainer.setMaxConcurrentConsumers(10);
         listenerContainer.setMessageListener((message)->{
             System.out.println("received message："+ Arrays.toString(message.getBody()));
         });
+        //每隔6秒发送一个IdleEventInterval事件，用于容器是否闲置(即没有消息到达)
         listenerContainer.setIdleEventInterval(6000L);
         return listenerContainer;
 

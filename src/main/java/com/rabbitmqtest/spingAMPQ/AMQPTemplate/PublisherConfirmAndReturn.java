@@ -25,14 +25,14 @@ public class PublisherConfirmAndReturn {
         this.produceMessage = produceMessage;
     }
 
-    private static void confirm(CorrelationData correlationData, boolean b, String s) {
+    private static void confirm(CorrelationData correlationData) {
         correlationData.setId("1");
     }
 
     public CachingConnectionFactory makeConfirmAndReturn(){
         CachingConnectionFactory factory = produceCachingConnectionFactory.createCCF();
-        factory.setPublisherConfirmType(CachingConnectionFactory.ConfirmType.CORRELATED);
-        factory.setPublisherReturns(true);
+        factory.setPublisherConfirmType(CachingConnectionFactory.ConfirmType.CORRELATED);   //开启发布者确认
+        factory.setPublisherReturns(true);      //开启发布者返回
         return factory;
     }
 

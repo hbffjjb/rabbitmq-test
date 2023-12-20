@@ -6,10 +6,11 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.CorrelationDataPostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProduceMessage implements MessagePostProcessor , CorrelationDataPostProcessor {
+public class ProduceMessage implements MessagePostProcessor , CorrelationDataPostProcessor{
     /**
      * message builder API 由 MessageBuilder 和 MessagePropertiesBuilder 提供
      * @return
